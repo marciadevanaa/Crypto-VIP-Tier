@@ -1,773 +1,108 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ajaib Kripto — VIP Tier Program (Research v2)</title>
+<title>Ajaib Kripto — VIP Tier Prototypes</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-body{background:#09090f;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:flex;flex-direction:column;align-items:center;padding:24px 0 40px;gap:14px;min-height:100vh}
-
-/* ── PRD HEADER ─────────────────────────────────────────── */
-.prd-hdr{width:390px}
-.prd-tag{display:inline-flex;align-items:center;gap:6px;background:#1a3a1a;border:1px solid #22c55e44;color:#22c55e;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:8px}
-.prd-hdr h1{color:#f0f0f0;font-size:19px;font-weight:800;margin-bottom:5px}
-.prd-hdr p{color:#4b5563;font-size:11px;line-height:1.55;border-left:2px solid #1c2a40;padding-left:10px}
-
-/* ── PHONE FRAME ─────────────────────────────────────────── */
-.phone{width:390px;height:820px;background:#fff;border-radius:50px;overflow:hidden;position:relative;box-shadow:0 0 0 10px #111318,0 40px 120px rgba(0,0,0,0.7)}
-
-/* ── SCREENS ─────────────────────────────────────────────── */
-.sc{position:absolute;inset:0;display:none;flex-direction:column;background:#fff;overflow:hidden}
-.sc.show{display:flex}
-
-/* ── STATUS BAR ──────────────────────────────────────────── */
-.sb{height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;flex-shrink:0}
-.sb-time{font-size:15px;font-weight:700}
-.sb-icons{display:flex;gap:5px;align-items:center;font-size:13px}
-
-/* ── BLUE HEADER (Kripto) ─────────────────────────────────── */
-.hdr-k{background:linear-gradient(160deg,#1540a8 0%,#1255d0 55%,#1060d8 100%);padding:0 20px 18px;flex-shrink:0}
-.hdr-k-inner{background:rgba(0,0,0,0.18);border-radius:14px;padding:14px 16px}
-.hdr-lbl{font-size:10px;color:rgba(255,255,255,0.55);letter-spacing:0.6px;text-transform:uppercase;margin-bottom:3px}
-.hdr-amount{font-size:26px;font-weight:800;color:#fff;letter-spacing:-0.5px}
-.hdr-sub-row{display:flex;gap:10px;margin-top:10px}
-.hdr-chip{flex:1;background:rgba(255,255,255,0.1);border-radius:9px;padding:7px 10px}
-.hdr-chip-lbl{font-size:10px;color:rgba(255,255,255,0.5)}
-.hdr-chip-val{font-size:13px;font-weight:700;color:#fff;margin-top:1px}
-
-/* ── SCROLL BODY ──────────────────────────────────────────── */
-.scroll{flex:1;overflow-y:auto;padding-bottom:80px}
-.scroll::-webkit-scrollbar{display:none}
-
-/* ── TOP TABS ─────────────────────────────────────────────── */
-.top-tabs{display:flex;background:linear-gradient(160deg,#1540a8,#1060d8);border-bottom:1px solid rgba(255,255,255,0.12);padding:0 4px;flex-shrink:0;overflow-x:auto}
-.top-tabs::-webkit-scrollbar{display:none}
-.ttab{padding:10px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,0.45);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
-.ttab.act{color:#fff;border-bottom-color:#fff;font-weight:700}
-
-/* ── VIP BANNER CARD ──────────────────────────────────────── */
-.vip-banner{margin:14px 16px 0;background:#fff;border:1.5px solid #e5e7eb;border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 2px 16px rgba(20,64,168,0.07)}
-.vip-banner:active{transform:scale(0.99)}
-.vip-banner-top{background:linear-gradient(135deg,#0f2878 0%,#1540a8 60%,#1060d8 100%);padding:14px 16px 12px;position:relative}
-.vip-crown-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.vip-tier-chip{background:#d4a017;border-radius:7px;padding:3px 11px;font-size:11px;font-weight:800;color:#1a0f00;letter-spacing:0.3px}
-.vip-scope-chip{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:7px;padding:3px 8px;font-size:10px;color:rgba(255,255,255,0.75)}
-.vip-main-label{font-size:17px;font-weight:800;color:#fff;letter-spacing:-0.2px}
-.vip-main-sub{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px}
-.vip-prog-row{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,0.5);margin:10px 0 4px}
-.vip-prog-track{height:4px;background:rgba(255,255,255,0.12);border-radius:2px}
-.vip-prog-fill{height:4px;border-radius:2px;background:linear-gradient(90deg,#d4a017,#f5d468)}
-.vip-banner-btm{display:flex;border-top:1px solid #f3f4f6}
-.vib{flex:1;padding:10px 12px;text-align:center;border-right:1px solid #f3f4f6}
-.vib:last-child{border-right:none}
-.vib-val{font-size:15px;font-weight:800;color:#1540a8}
-.vib-lbl{font-size:10px;color:#9ca3af;margin-top:1px}
-.vib-cmp{font-size:10px;color:#22c55e;font-weight:600}
-
-/* ── SECTION ──────────────────────────────────────────────── */
-.sec{padding:14px 16px 0}
-.sec-title{font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px}
-
-/* ── COIN ROW ─────────────────────────────────────────────── */
-.coin-row{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid #f9fafb}
-.coin-row:active{background:#fafafa}
-.coin-ico{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-right:12px;flex-shrink:0}
-.coin-nfo{flex:1}
-.coin-name{font-size:14px;font-weight:700;color:#111}
-.coin-pair{font-size:11px;color:#9ca3af}
-.coin-price{text-align:right}
-.coin-val{font-size:14px;font-weight:700;color:#111}
-.up{color:#16a34a}.dn{color:#dc2626}
-
-/* ── BACK HEADER ──────────────────────────────────────────── */
-.back-bar{display:flex;align-items:center;padding:10px 16px 8px;flex-shrink:0;border-bottom:1px solid #f3f4f6}
-.back-btn{width:34px;height:34px;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;outline:none;font-size:17px;color:#374151}
-.back-ttl{font-size:16px;font-weight:700;color:#111;margin-left:10px;flex:1}
-.back-action{font-size:13px;color:#1540a8;font-weight:600;cursor:pointer}
-
-/* ── VIP HERO ─────────────────────────────────────────────── */
-.vip-hero{margin:0 16px;background:linear-gradient(150deg,#0d2070,#1540a8,#1060d8);border-radius:20px;padding:20px;overflow:hidden;position:relative}
-.vip-hero::after{content:'';position:absolute;right:-30px;top:-30px;width:130px;height:130px;background:rgba(255,255,255,0.04);border-radius:50%}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;background:#d4a017;border-radius:9px;padding:5px 14px;margin-bottom:12px}
-.hero-badge span{font-size:15px;font-weight:900;color:#1a0f00}
-.hero-title{font-size:22px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:4px}
-.hero-sub{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5}
-.hero-insight{margin-top:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:11px 14px;display:flex;align-items:flex-start;gap:9px}
-.hi-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.hi-text{font-size:11px;color:rgba(255,255,255,0.7);line-height:1.55}
-.hi-text strong{color:#fff}
-
-/* ── SCOPE BANNER ─────────────────────────────────────────── */
-.scope-bar{display:flex;align-items:center;gap:8px;margin:12px 16px 0;background:#eff6ff;border:1px solid #bfdbfe;border-radius:11px;padding:10px 13px}
-.scope-bar-icon{font-size:15px;color:#2563eb;flex-shrink:0}
-.scope-bar-text{font-size:11px;color:#1d4ed8;line-height:1.45}
-
-/* ── BEN GRID ─────────────────────────────────────────────── */
-.ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 16px 0}
-.ben-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:13px 12px;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
-.bc-ico{width:30px;height:30px;border-radius:9px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:8px}
-.bc-lbl{font-size:10px;color:#9ca3af;margin-bottom:2px}
-.bc-val{font-size:17px;font-weight:800;color:#111}
-.bc-cmp{font-size:10px;font-weight:600;color:#16a34a;margin-top:2px}
-.bc-reg{font-size:10px;color:#d1d5db;text-decoration:line-through}
-
-/* ── PROG CARD ────────────────────────────────────────────── */
-.prog-card{margin:12px 16px 0;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:15px;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-.pc-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.pc-title{font-size:13px;font-weight:700;color:#111}
-.pc-pct{font-size:12px;font-weight:700;color:#d4a017;background:#fef9e7;padding:2px 8px;border-radius:6px}
-.pc-track{height:6px;background:#f3f4f6;border-radius:3px}
-.pc-fill{height:6px;border-radius:3px;background:linear-gradient(90deg,#d4a017,#f5d468)}
-.pc-sub{font-size:11px;color:#9ca3af;margin-top:6px;line-height:1.4}
-
-/* ── CTA ROW ──────────────────────────────────────────────── */
-.cta-row{display:flex;gap:8px;margin:12px 16px 0}
-.cta-btn{flex:1;padding:12px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;color:#1540a8;font-size:12px;font-weight:700;cursor:pointer;outline:none;text-align:center}
-.cta-btn-blue{flex:1;padding:12px;background:#1540a8;border:none;border-radius:12px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;outline:none;text-align:center}
-
-/* ── FEE TABLE ────────────────────────────────────────────── */
-.fee-tbl-wrap{margin:12px 16px 0;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb}
-.fee-tbl-hdr{display:grid;grid-template-columns:0.9fr 1fr 1fr 1fr 1fr;background:#f9fafb;border-bottom:1px solid #e5e7eb;padding:8px 0}
-.fth{font-size:9px;font-weight:700;color:#9ca3af;text-align:center;text-transform:uppercase;letter-spacing:0.4px;padding:0 4px}
-.fth:first-child{text-align:left;padding-left:10px}
-.fee-row{display:grid;grid-template-columns:0.9fr 1fr 1fr 1fr 1fr;border-bottom:1px solid #f3f4f6;padding:9px 0;align-items:center}
-.fee-row.you{background:#eff6ff;border-left:3px solid #1540a8}
-.fee-row:last-child{border-bottom:none}
-.fc{font-size:11px;text-align:center;color:#6b7280;padding:0 3px}
-.fc:first-child{text-align:left;padding-left:10px;font-weight:700;font-size:11px}
-.fc-tier{font-weight:800;color:#d4a017;font-size:11px}
-.fc-tier.reg{color:#9ca3af;font-weight:600}
-.fc-tier.you-lbl{color:#1540a8}
-.fc-val{font-weight:700;color:#16a34a;font-size:12px}
-.fc-muted{color:#d1d5db;font-size:11px}
-.competitor-hdr{display:grid;grid-template-columns:0.9fr 1fr 1fr 1fr 1fr;background:#fefce8;border-bottom:1px solid #fef08a;padding:6px 0}
-.cmp-lbl{font-size:9px;font-weight:700;color:#92400e;text-align:center;text-transform:uppercase;letter-spacing:0.4px}
-.cmp-lbl:first-child{text-align:left;padding-left:10px}
-.fee-cmp-row{display:grid;grid-template-columns:0.9fr 1fr 1fr 1fr 1fr;border-bottom:1px solid #f3f4f6;padding:8px 0;background:#fffbeb}
-.fee-cmp-row:last-child{border-bottom:none}
-.fc-cmp{font-size:11px;text-align:center;color:#92400e;padding:0 3px}
-.fc-cmp:first-child{text-align:left;padding-left:10px;font-weight:700;color:#78350f}
-
-/* ── QUALIFY ──────────────────────────────────────────────── */
-.qual-toggle{display:flex;background:#f3f4f6;border-radius:11px;margin:14px 16px 0;padding:3px}
-.qt-btn{flex:1;padding:8px;border-radius:9px;text-align:center;font-size:12px;font-weight:600;cursor:pointer;border:none;outline:none;background:none;color:#6b7280;transition:all 0.2s}
-.qt-btn.act{background:#fff;color:#1540a8;box-shadow:0 1px 4px rgba(0,0,0,0.08)}
-
-/* ── ORDER PANEL ──────────────────────────────────────────── */
-.mkt-stats{display:flex;gap:6px;margin:8px 16px 0}
-.mst{flex:1;background:#f9fafb;border-radius:10px;padding:9px 10px;border:1px solid #f3f4f6}
-.mst-lbl{font-size:10px;color:#9ca3af;margin-bottom:2px}
-.mst-val{font-size:12px;font-weight:700;color:#111}
-.dir-tabs{display:flex;margin:12px 16px 0;background:#f3f4f6;border-radius:11px;padding:3px}
-.dt-buy{flex:1;padding:9px;border-radius:9px;background:#16a34a;color:#fff;font-size:13px;font-weight:700;text-align:center;cursor:pointer;border:none;outline:none}
-.dt-sell{flex:1;padding:9px;border-radius:9px;background:none;color:#9ca3af;font-size:13px;font-weight:700;text-align:center;cursor:pointer;border:none;outline:none}
-.field-group{margin:10px 16px 0}
-.field-lbl{font-size:11px;font-weight:600;color:#6b7280;margin-bottom:4px}
-.field-input{background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
-.field-val{font-size:15px;font-weight:700;color:#111}
-.field-unit{font-size:12px;color:#9ca3af}
-.pct-row{display:flex;gap:6px;margin:8px 16px 0}
-.pct-btn{flex:1;padding:6px;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:7px;font-size:11px;color:#374151;text-align:center;cursor:pointer;outline:none;border:none}
-.fee-line{display:flex;align-items:center;justify-content:space-between;margin:10px 16px 0;padding:11px 14px;background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:12px;cursor:pointer}
-.fl-left{font-size:12px;color:#6b7280}
-.fl-right{display:flex;align-items:center;gap:7px}
-.fl-val{font-size:13px;font-weight:800;color:#16a34a}
-.fl-badge{background:#1540a8;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700;color:#fff}
-.fl-cmp{font-size:10px;color:#2563eb;font-weight:500}
-.fl-arrow{font-size:14px;color:#93c5fd}
-.order-total{display:flex;justify-content:space-between;margin:8px 16px 0;font-size:12px}
-.ot-lbl{color:#9ca3af}
-.ot-val{font-weight:700;color:#111}
-.ot-fee{font-weight:700;color:#16a34a}
-.order-btn{display:block;margin:12px 16px 0;width:calc(100% - 32px);padding:15px;background:#16a34a;border:none;border-radius:14px;color:#fff;font-size:16px;font-weight:800;cursor:pointer;outline:none}
-
-/* ── UPGRADE NOTIF ────────────────────────────────────────── */
-.upg-outer{margin:16px;background:#fff;border:1px solid #e5e7eb;border-radius:22px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
-.upg-banner{background:linear-gradient(135deg,#d4a017 0%,#f5d468 100%);padding:22px 20px;text-align:center}
-.upg-icon{font-size:40px;margin-bottom:8px}
-.upg-title{font-size:20px;font-weight:900;color:#1a0f00;line-height:1.2}
-.upg-sub{font-size:12px;color:rgba(26,15,0,0.6);margin-top:4px}
-.upg-body{padding:18px 18px 20px}
-.upg-ba{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.upg-chip{flex:1;background:#f9fafb;border-radius:11px;padding:12px;text-align:center;border:1px solid #e5e7eb}
-.upg-chip.new{border-color:#1540a8;background:#eff6ff}
-.upg-chip-lbl{font-size:10px;color:#9ca3af;margin-bottom:3px}
-.upg-chip-name{font-size:16px;font-weight:900;color:#d1d5db}
-.upg-chip-name.new{color:#1540a8}
-.upg-arr{font-size:22px;color:#d1d5db}
-.upg-diff{background:#f9fafb;border-radius:13px;padding:13px;margin-bottom:14px;border:1px solid #f3f4f6}
-.upg-diff-title{font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
-.upg-diff-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px}
-.upg-diff-row:last-child{margin-bottom:0}
-.udl{color:#6b7280}
-.udr{display:flex;align-items:center;gap:6px}
-.udr-old{color:#d1d5db;text-decoration:line-through;font-size:11px}
-.udr-new{color:#16a34a;font-weight:800;font-size:13px}
-.upg-insight{background:#eff6ff;border:1px solid #bfdbfe;border-radius:11px;padding:11px 13px;display:flex;gap:8px;margin-bottom:14px}
-.ui-icon{font-size:15px;color:#1540a8;flex-shrink:0;margin-top:1px}
-.ui-text{font-size:11px;color:#1d4ed8;line-height:1.5}
-.upg-cta{display:block;width:100%;padding:14px;background:#1540a8;border:none;border-radius:13px;color:#fff;font-size:15px;font-weight:800;cursor:pointer;outline:none;text-align:center}
-.upg-skip{text-align:center;margin-top:10px;font-size:12px;color:#9ca3af;cursor:pointer}
-
-/* ── BOTTOM NAV ───────────────────────────────────────────── */
-.bnav{position:absolute;bottom:0;left:0;width:100%;background:#fff;border-top:1px solid #f3f4f6;display:flex;height:76px;align-items:flex-start;padding-top:10px;z-index:10}
-.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;background:none;border:none;outline:none}
-.nb .ico{font-size:21px}
-.nb .lbl{font-size:9px;font-weight:500;color:#9ca3af}
-.nb.act .lbl{color:#1540a8;font-weight:700}
-
-/* ── NAV DOTS ─────────────────────────────────────────────── */
-.screen-nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;max-width:390px}
-.nav-dot{padding:7px 14px;background:#111318;border:1px solid #2a2d3a;border-radius:20px;color:rgba(255,255,255,0.55);font-size:11px;cursor:pointer;outline:none;transition:all 0.2s}
-.nav-dot.act{background:#1540a8;border-color:#1540a8;color:#fff;font-weight:700}
-.nav-dot.gold{background:#1a1100;border-color:#d4a01744;color:#d4a017}
-
-/* ── RESEARCH NOTE ────────────────────────────────────────── */
-.research-note{width:390px;background:#0f1f0f;border:1px solid #22c55e22;border-radius:14px;padding:14px 16px}
-.rn-title{font-size:10px;font-weight:700;color:#22c55e;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
-.rn-item{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
-.rn-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;flex-shrink:0;margin-top:5px}
-.rn-txt{font-size:11px;color:#4b5563;line-height:1.5}
-.rn-txt strong{color:#9ca3af}
-
-/* ── INSIGHT INLINE ───────────────────────────────────────── */
-.inline-insight{display:flex;gap:8px;margin:10px 16px 0;background:#fefce8;border:1px solid #fef08a;border-radius:11px;padding:10px 12px;align-items:flex-start}
-.ii-icon{font-size:14px;flex-shrink:0;margin-top:1px}
-.ii-text{font-size:11px;color:#92400e;line-height:1.45}
-
-/* ── QUALIFY CONTENT ──────────────────────────────────────── */
-.qual-card{margin:12px 16px 0;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-.qc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.qc-amt{font-size:24px;font-weight:900;color:#111;letter-spacing:-0.5px}
-.qc-lbl{font-size:11px;color:#9ca3af;margin-bottom:2px}
-.qc-tier{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:9px;padding:4px 10px;font-size:12px;font-weight:800;color:#1540a8}
-.qc-prog{margin-bottom:12px}
-.qcp-lbl{display:flex;justify-content:space-between;font-size:11px;color:#9ca3af;margin-bottom:5px}
-.qcp-track{height:6px;background:#f3f4f6;border-radius:3px;overflow:hidden}
-.qcp-fill{height:6px;border-radius:3px;background:linear-gradient(90deg,#1540a8,#60a5fa)}
-.tier-list{background:#f9fafb;border-radius:11px;padding:12px}
-.tl-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #f3f4f6;font-size:12px}
-.tl-row:last-child{border-bottom:none}
-.tl-tier{font-weight:700;color:#d4a017}
-.tl-tier.reg{color:#9ca3af;font-weight:500}
-.tl-tier.active{color:#1540a8}
-.tl-target{color:#9ca3af}
-.tl-status-ok{color:#16a34a;font-weight:600}
-.tl-status-cur{color:#1540a8;font-weight:700}
-.tl-status-prog{color:#d4a017;font-weight:600}
-.tl-status-no{color:#d1d5db}
-
-/* ── COMPETITOR BADGE ─────────────────────────────────────── */
-.cmp-badge-row{display:flex;gap:6px;margin:12px 16px 0;flex-wrap:wrap}
-.cmp-badge{background:#f9fafb;border:1px solid #e5e7eb;border-radius:9px;padding:6px 10px;display:flex;align-items:center;gap:5px}
-.cmp-badge-name{font-size:10px;font-weight:700;color:#374151}
-.cmp-badge-fee{font-size:12px;font-weight:800;color:#dc2626}
-.cmp-badge-lbl{font-size:9px;color:#9ca3af}
-.cmp-yours{background:#eff6ff;border-color:#bfdbfe}
-.cmp-yours .cmp-badge-fee{color:#16a34a}
-.cmp-yours .cmp-badge-name{color:#1540a8}
+body{background:#07080d;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
+.header{text-align:center;margin-bottom:40px}
+.tag{display:inline-flex;align-items:center;gap:6px;background:#0f1f3d;border:1px solid #1540a844;color:#60a5fa;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:16px}
+.title{font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:8px}
+.subtitle{font-size:14px;color:#4b5563;line-height:1.6;max-width:420px;margin:0 auto}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:680px;width:100%}
+@media(max-width:540px){.grid{grid-template-columns:1fr}}
+.card{background:#0d1117;border:1px solid #1c2136;border-radius:20px;overflow:hidden;text-decoration:none;transition:transform 0.2s,border-color 0.2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);border-color:#1540a8}
+.card-thumb{height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.thumb-v1{background:linear-gradient(135deg,#1a0a3c 0%,#0f172a 100%)}
+.thumb-v2{background:linear-gradient(135deg,#0d2070 0%,#1540a8 60%,#1060d8 100%)}
+.thumb-phone{width:72px;height:130px;background:#fff;border-radius:14px;border:3px solid rgba(255,255,255,0.15);position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.5)}
+.thumb-hdr-v1{height:38px;background:linear-gradient(135deg,#3a1c8a,#4e23b5)}
+.thumb-hdr-v2{height:38px;background:linear-gradient(135deg,#1540a8,#1060d8)}
+.thumb-lines{padding:6px 5px;display:flex;flex-direction:column;gap:4px}
+.thumb-line{height:5px;border-radius:2px;background:#e5e7eb}
+.thumb-line.short{width:60%}
+.thumb-card-mini{margin:5px;height:24px;border-radius:5px;background:#f3f4f6;border:1px solid #e5e7eb}
+.thumb-card-mini.blue{background:#eff6ff;border-color:#bfdbfe}
+.badge{position:absolute;top:12px;right:12px;background:#1540a8;border:1px solid #2563eb;border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#60a5fa;letter-spacing:0.5px}
+.badge.gold{background:#1a1100;border-color:#d4a01744;color:#d4a017}
+.card-body{padding:18px 18px 20px;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:6px}
+.card-desc{font-size:12px;color:#4b5563;line-height:1.6;flex:1;margin-bottom:14px}
+.card-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px}
+.tag-pill{background:#111827;border:1px solid #1c2136;border-radius:6px;padding:3px 8px;font-size:10px;color:#6b7280;font-weight:500}
+.tag-pill.blue{background:#0f1f3d;border-color:#1540a844;color:#60a5fa}
+.card-cta{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:#1540a8;border-radius:11px;color:#fff;font-size:13px;font-weight:700}
+.card-cta-arrow{font-size:16px;opacity:0.7}
+.footer{margin-top:36px;text-align:center;font-size:11px;color:#2a2f3d}
 </style>
 </head>
 <body>
 
-<!-- PRD HEADER -->
-<div class="prd-hdr">
-  <div class="prd-tag">&#9679; VIP Fee Tier · Research-Based v2</div>
-  <h1>Coin VIP Program</h1>
-  <p>Dirancang berdasarkan temuan CI Crypto Discovery Study: pengguna aktif membandingkan Ajaib dengan Binance/OKX/Bybit dan mempertimbangkan migrasi karena gap fee. VIP tier = fee parity + retention loop.</p>
+<div class="header">
+  <div class="tag">&#9679; Design Prototype</div>
+  <div class="title">Ajaib Coin VIP Tier</div>
+  <div class="subtitle">Clickable prototypes for the VIP Fee Tier Program. Open each to explore the full user flow.</div>
 </div>
 
-<!-- PHONE -->
-<div class="phone">
+<div class="grid">
 
-<!-- ═══════════════════════════════════════════════
-     SCREEN 1 — KRIPTO HOME
-═══════════════════════════════════════════════ -->
-<div class="sc show" id="s1">
-  <div class="sb"><span class="sb-time" style="color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.3)">9:41</span><div class="sb-icons" style="color:#fff">▲▲ WiFi 🔋</div></div>
-  <div class="hdr-k" style="padding-top:0">
-    <div class="hdr-k-inner">
-      <div class="hdr-lbl">Total Investasi Kripto</div>
-      <div class="hdr-amount">Rp 34.500.000</div>
-      <div class="hdr-sub-row">
-        <div class="hdr-chip"><div class="hdr-chip-lbl">Cash</div><div class="hdr-chip-val">Rp 2.340.000</div></div>
-        <div class="hdr-chip"><div class="hdr-chip-lbl">P&L Hari Ini</div><div class="hdr-chip-val" style="color:#86efac">+Rp 420.000</div></div>
-        <div class="hdr-chip"><div class="hdr-chip-lbl">Vol 30D</div><div class="hdr-chip-val">Rp 6,8M</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="top-tabs">
-    <div class="ttab act">Jelajahi</div>
-    <div class="ttab">Watchlist</div>
-    <div class="ttab">Aset</div>
-    <div class="ttab">Posisi</div>
-  </div>
-  <div class="scroll">
-    <!-- VIP Banner — placed INSIDE Kripto section, not account level -->
-    <div class="vip-banner" onclick="goTo('s2')">
-      <div class="vip-banner-top">
-        <div class="vip-crown-row">
-          <div class="vip-tier-chip">&#9733; Coin VIP 2</div>
-          <div class="vip-scope-chip">Kripto Only</div>
+  <a class="card" href="vip-tier-prototype.html">
+    <div class="card-thumb thumb-v1">
+      <div class="thumb-phone">
+        <div class="thumb-hdr-v1"></div>
+        <div class="thumb-lines">
+          <div class="thumb-line" style="background:#d4a017;width:45%"></div>
+          <div class="thumb-line short"></div>
         </div>
-        <div class="vip-main-label">Fee setara exchange global</div>
-        <div class="vip-main-sub">Kamu hemat Rp 47.600/bln vs fee reguler · berlaku hari ini</div>
-        <div class="vip-prog-row"><span>Progress ke VIP 3</span><span>68% · butuh Rp 3,2M lagi</span></div>
-        <div class="vip-prog-track"><div class="vip-prog-fill" style="width:68%"></div></div>
+        <div class="thumb-card-mini" style="background:#1c2136;border-color:#2d344a"></div>
+        <div class="thumb-card-mini" style="background:#1c2136;border-color:#2d344a;margin-top:4px"></div>
       </div>
-      <div class="vip-banner-btm">
-        <div class="vib"><div class="vib-val">0,06%</div><div class="vib-lbl">Spot Taker</div><div class="vib-cmp">vs 0,10% reguler</div></div>
-        <div class="vib"><div class="vib-val">0,02%</div><div class="vib-lbl">Fut Maker</div><div class="vib-cmp">vs 0,06% reguler</div></div>
-        <div class="vib"><div class="vib-val">≈ Binance</div><div class="vib-lbl">VIP 1 setara</div><div class="vib-cmp">benchmark global</div></div>
+      <div class="badge gold">V1 · Dark</div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">VIP Tier — Dark Theme</div>
+      <div class="card-desc">First iteration. Dark UI with gold VIP accents. Covers tier landing page, fee table, progress tracker, and order panel fee line.</div>
+      <div class="card-tags">
+        <div class="tag-pill">6 Screens</div>
+        <div class="tag-pill">Dark Mode</div>
+        <div class="tag-pill">Clickable</div>
       </div>
+      <div class="card-cta">Open Prototype <span class="card-cta-arrow">&#8599;</span></div>
     </div>
+  </a>
 
-    <div class="inline-insight">
-      <div class="ii-icon">&#128202;</div>
-      <div class="ii-text">Volume trading 30D kamu <strong>Rp 6,8M</strong> — kamu sudah di segmen trader aktif. VIP 3 di <strong>Rp 10M</strong> memberikan fee lebih rendah dari Binance regular user.</div>
+  <a class="card" href="vip-tier-research-v2.html">
+    <div class="card-thumb thumb-v2">
+      <div class="thumb-phone">
+        <div class="thumb-hdr-v2"></div>
+        <div class="thumb-lines">
+          <div class="thumb-line short" style="background:#d4a017"></div>
+          <div class="thumb-line"></div>
+        </div>
+        <div class="thumb-card-mini blue"></div>
+        <div class="thumb-card-mini blue" style="margin-top:4px"></div>
+      </div>
+      <div class="badge">V2 · Research</div>
     </div>
+    <div class="card-body">
+      <div class="card-title">VIP Tier — Research v2</div>
+      <div class="card-desc">Rebuilt from CI Crypto Discovery Study. Addresses Binance/OKX migration risk with competitor benchmarks and trader persona copy.</div>
+      <div class="card-tags">
+        <div class="tag-pill blue">Research-Based</div>
+        <div class="tag-pill">6 Screens</div>
+        <div class="tag-pill">Light Mode</div>
+        <div class="tag-pill">Clickable</div>
+      </div>
+      <div class="card-cta">Open Prototype <span class="card-cta-arrow">&#8599;</span></div>
+    </div>
+  </a>
 
-    <div class="sec"><div class="sec-title">Trending Sekarang</div></div>
-    <div class="coin-row" onclick="goTo('s5')">
-      <div class="coin-ico" style="background:#fff7ed;color:#f97316">₿</div>
-      <div class="coin-nfo"><div class="coin-name">Bitcoin</div><div class="coin-pair">BTC/IDR · Futures 25x</div></div>
-      <div class="coin-price"><div class="coin-val">Rp 1,62M</div><div style="font-size:11px;font-weight:600" class="up">+2,41%</div></div>
-    </div>
-    <div class="coin-row">
-      <div class="coin-ico" style="background:#eff6ff;color:#3b82f6">Ξ</div>
-      <div class="coin-nfo"><div class="coin-name">Ethereum</div><div class="coin-pair">ETH/IDR</div></div>
-      <div class="coin-price"><div class="coin-val">Rp 54.200</div><div style="font-size:11px;font-weight:600" class="up">+1,87%</div></div>
-    </div>
-    <div class="coin-row">
-      <div class="coin-ico" style="background:#f0fdf4;color:#16a34a">◎</div>
-      <div class="coin-nfo"><div class="coin-name">Solana</div><div class="coin-pair">SOL/IDR</div></div>
-      <div class="coin-price"><div class="coin-val">Rp 2.840.000</div><div style="font-size:11px;font-weight:600" class="up">+4,11%</div></div>
-    </div>
-    <div class="coin-row">
-      <div class="coin-ico" style="background:#fef2f2;color:#ef4444">◆</div>
-      <div class="coin-nfo"><div class="coin-name">Avalanche</div><div class="coin-pair">AVAX/IDR</div></div>
-      <div class="coin-price"><div class="coin-val">Rp 598.000</div><div style="font-size:11px;font-weight:600" class="dn">-0,92%</div></div>
-    </div>
-    <div class="sec" style="padding-bottom:4px"><div class="sec-title">Kripto Pilihan</div></div>
-    <div class="coin-row">
-      <div class="coin-ico" style="background:#fefce8;color:#ca8a04">$</div>
-      <div class="coin-nfo"><div class="coin-name">USD Coin</div><div class="coin-pair">USDC/IDR</div></div>
-      <div class="coin-price"><div class="coin-val">Rp 16.420</div><div style="font-size:11px;color:#9ca3af">0,00%</div></div>
-    </div>
-  </div>
-  <nav class="bnav">
-    <button class="nb" onclick="goTo('s1')"><div class="ico">🏠</div><span class="lbl">Home</span></button>
-    <button class="nb act"><div class="ico" style="font-size:20px">₿</div><span class="lbl">Kripto</span></button>
-    <button class="nb" onclick="goTo('s5')"><div class="ico">📈</div><span class="lbl">Trade</span></button>
-    <button class="nb"><div class="ico">🥧</div><span class="lbl">Portfolio</span></button>
-    <button class="nb"><div class="ico">👤</div><span class="lbl">Akun</span></button>
-  </nav>
 </div>
 
+<div class="footer">Ajaib Kripto &middot; VIP Fee Tier Program &middot; 2026</div>
 
-<!-- ═══════════════════════════════════════════════
-     SCREEN 2 — VIP LANDING
-═══════════════════════════════════════════════ -->
-<div class="sc" id="s2">
-  <div class="sb"><span class="sb-time">9:41</span><div class="sb-icons">▲▲ WiFi 🔋</div></div>
-  <div class="back-bar">
-    <button class="back-btn" onclick="goTo('s1')">&#8592;</button>
-    <span class="back-ttl">Coin VIP Program</span>
-    <span class="back-action" onclick="goTo('s3')">Lihat Fee</span>
-  </div>
-  <div class="scroll">
-    <div style="height:12px"></div>
-    <div class="vip-hero">
-      <div class="hero-badge"><span>&#9733; Coin VIP 2</span></div>
-      <div class="hero-title">Fee setara<br>exchange global</div>
-      <div class="hero-sub">Aktif hari ini · dievaluasi ulang setiap malam pukul 00:00</div>
-      <div class="hero-insight">
-        <div class="hi-icon">&#128202;</div>
-        <div class="hi-text">Kamu trading <strong>Rp 6,8M/bulan</strong> — di Binance, ini setara VIP 1. Ajaib Coin VIP 2 memberikan fee yang kompetitif. Capai VIP 3 untuk lebih rendah dari Binance regular.</div>
-      </div>
-    </div>
-
-    <div class="scope-bar">
-      <div class="scope-bar-icon">&#8505;</div>
-      <div class="scope-bar-text">Benefit berlaku untuk <strong>Kripto Spot</strong> dan <strong>Kripto Futures</strong> saja. Tidak berlaku untuk Saham IDR, Saham AS, dan Reksadana.</div>
-    </div>
-
-    <div class="sec"><div class="sec-title">Benefit aktif sekarang</div></div>
-    <div class="ben-grid">
-      <div class="ben-card"><div class="bc-ico">&#8652;</div><div class="bc-lbl">Spot Maker</div><div class="bc-val">0,04%</div><div class="bc-reg">reguler 0,10%</div><div class="bc-cmp">Hemat 60%</div></div>
-      <div class="ben-card"><div class="bc-ico">&#8652;</div><div class="bc-lbl">Spot Taker</div><div class="bc-val">0,06%</div><div class="bc-reg">reguler 0,12%</div><div class="bc-cmp">Hemat 50%</div></div>
-      <div class="ben-card"><div class="bc-ico">&#9889;</div><div class="bc-lbl">Fut Maker</div><div class="bc-val">0,02%</div><div class="bc-reg">reguler 0,06%</div><div class="bc-cmp">Hemat 67%</div></div>
-      <div class="ben-card"><div class="bc-ico">&#9889;</div><div class="bc-lbl">Fut Taker</div><div class="bc-val">0,05%</div><div class="bc-reg">reguler 0,08%</div><div class="bc-cmp">Hemat 38%</div></div>
-    </div>
-
-    <div class="sec" style="margin-top:4px"><div class="sec-title">Perbandingan dengan exchange global</div></div>
-    <div class="cmp-badge-row">
-      <div class="cmp-badge cmp-yours"><div><div class="cmp-badge-name">Ajaib VIP 2</div><div class="cmp-badge-lbl">Spot Taker</div></div><div class="cmp-badge-fee">0,06%</div></div>
-      <div class="cmp-badge"><div><div class="cmp-badge-name">Binance VIP 1</div><div class="cmp-badge-lbl">Spot Taker</div></div><div class="cmp-badge-fee">0,08%</div></div>
-      <div class="cmp-badge"><div><div class="cmp-badge-name">OKX VIP 1</div><div class="cmp-badge-lbl">Spot Taker</div></div><div class="cmp-badge-fee">0,08%</div></div>
-    </div>
-
-    <div class="prog-card">
-      <div class="pc-row"><div class="pc-title">Progress ke Coin VIP 3</div><div class="pc-pct">68%</div></div>
-      <div class="pc-track"><div class="pc-fill" style="width:68%"></div></div>
-      <div class="pc-sub">Volume 30D: Rp 6,8M / Rp 10M · Butuh Rp 3,2M lagi.<br>VIP 3 = fee lebih rendah dari Binance regular user.</div>
-    </div>
-
-    <div class="cta-row">
-      <button class="cta-btn" onclick="goTo('s3')">Tabel Fee Lengkap</button>
-      <button class="cta-btn-blue" onclick="goTo('s4')">Cara Kualifikasi</button>
-    </div>
-    <div style="height:10px"></div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════
-     SCREEN 3 — FEE TABLE + COMPETITOR COMPARE
-═══════════════════════════════════════════════ -->
-<div class="sc" id="s3">
-  <div class="sb"><span class="sb-time">9:41</span><div class="sb-icons">▲▲ WiFi 🔋</div></div>
-  <div class="back-bar">
-    <button class="back-btn" onclick="goTo('s2')">&#8592;</button>
-    <span class="back-ttl">Tabel Fee Tier</span>
-  </div>
-  <div class="scroll">
-    <div style="margin:12px 16px 0;background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:10px 13px;font-size:11px;color:#1d4ed8;line-height:1.5">
-      Threshold berdasarkan <strong>Volume 30D ATAU AUM EOD</strong> — sistem otomatis pilih yang lebih menguntungkan untuk kamu.
-    </div>
-
-    <!-- Ajaib Tiers -->
-    <div class="sec" style="margin-top:10px"><div class="sec-title">Fee Ajaib Coin VIP</div></div>
-    <div class="fee-tbl-wrap">
-      <div class="fee-tbl-hdr">
-        <div class="fth">Tier</div>
-        <div class="fth">Vol/AUM</div>
-        <div class="fth">S.Maker</div>
-        <div class="fth">S.Taker</div>
-        <div class="fth">F.Maker</div>
-      </div>
-      <div class="fee-row">
-        <div class="fc fc-tier reg">Regular</div>
-        <div class="fc fc-muted">—</div>
-        <div class="fc fc-muted">0,10%</div>
-        <div class="fc fc-muted">0,12%</div>
-        <div class="fc fc-muted">0,06%</div>
-      </div>
-      <div class="fee-row">
-        <div class="fc fc-tier">VIP 1</div>
-        <div class="fc fc-muted" style="font-size:10px">≥500jt</div>
-        <div class="fc fc-val">0,07%</div>
-        <div class="fc fc-val">0,09%</div>
-        <div class="fc fc-val">0,04%</div>
-      </div>
-      <div class="fee-row you">
-        <div class="fc fc-tier you-lbl">VIP 2 <span style="font-size:9px;background:#dbeafe;color:#1540a8;border-radius:4px;padding:1px 4px;margin-left:2px">kamu</span></div>
-        <div class="fc fc-muted" style="font-size:10px">≥2M</div>
-        <div class="fc fc-val">0,04%</div>
-        <div class="fc fc-val">0,06%</div>
-        <div class="fc fc-val">0,02%</div>
-      </div>
-      <div class="fee-row">
-        <div class="fc fc-tier" style="opacity:0.6">VIP 3</div>
-        <div class="fc fc-muted" style="font-size:10px;opacity:0.6">≥10M</div>
-        <div class="fc fc-val" style="opacity:0.6">0,02%</div>
-        <div class="fc fc-val" style="opacity:0.6">0,05%</div>
-        <div class="fc fc-val" style="opacity:0.6">0,01%</div>
-      </div>
-      <div class="fee-row">
-        <div class="fc fc-tier" style="opacity:0.4">VIP 4</div>
-        <div class="fc fc-muted" style="font-size:10px;opacity:0.4">≥30M</div>
-        <div class="fc fc-val" style="opacity:0.4">0,01%</div>
-        <div class="fc fc-val" style="opacity:0.4">0,03%</div>
-        <div class="fc fc-val" style="opacity:0.4">0,00%</div>
-      </div>
-      <div class="fee-row">
-        <div class="fc fc-tier" style="opacity:0.25">VIP 5</div>
-        <div class="fc fc-muted" style="font-size:10px;opacity:0.25">≥100M</div>
-        <div class="fc fc-val" style="opacity:0.25">0,00%</div>
-        <div class="fc fc-val" style="opacity:0.25">0,02%</div>
-        <div class="fc fc-val" style="opacity:0.25">0,00%</div>
-      </div>
-    </div>
-
-    <!-- Global Benchmark -->
-    <div class="sec" style="margin-top:10px"><div class="sec-title">Benchmark global (Spot Taker)</div></div>
-    <div class="fee-tbl-wrap" style="border-color:#fef08a">
-      <div class="competitor-hdr">
-        <div class="cmp-lbl">Exchange</div>
-        <div class="cmp-lbl">Regular</div>
-        <div class="cmp-lbl">VIP 1</div>
-        <div class="cmp-lbl">VIP 2</div>
-        <div class="cmp-lbl">VIP 3</div>
-      </div>
-      <div class="fee-cmp-row">
-        <div class="fc-cmp">Binance</div>
-        <div class="fc-cmp">0,10%</div>
-        <div class="fc-cmp">0,08%</div>
-        <div class="fc-cmp">0,06%</div>
-        <div class="fc-cmp">0,05%</div>
-      </div>
-      <div class="fee-cmp-row">
-        <div class="fc-cmp">OKX</div>
-        <div class="fc-cmp">0,10%</div>
-        <div class="fc-cmp">0,08%</div>
-        <div class="fc-cmp">0,07%</div>
-        <div class="fc-cmp">0,06%</div>
-      </div>
-      <div class="fee-cmp-row">
-        <div class="fc-cmp">Bybit</div>
-        <div class="fc-cmp">0,10%</div>
-        <div class="fc-cmp">0,09%</div>
-        <div class="fc-cmp">0,08%</div>
-        <div class="fc-cmp">0,06%</div>
-      </div>
-    </div>
-    <div style="margin:8px 16px;font-size:10px;color:#9ca3af;line-height:1.6">* Benchmark bersifat indikatif per Juni 2026. Fee Ajaib VIP 2 kompetitif terhadap Binance VIP 1 global. S = Spot · F = Futures.</div>
-
-    <div class="cta-row">
-      <button class="cta-btn-blue" style="flex:1" onclick="goTo('s4')">Lihat Progress Saya</button>
-    </div>
-    <div style="height:10px"></div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════
-     SCREEN 4 — QUALIFY PROGRESS
-═══════════════════════════════════════════════ -->
-<div class="sc" id="s4">
-  <div class="sb"><span class="sb-time">9:41</span><div class="sb-icons">▲▲ WiFi 🔋</div></div>
-  <div class="back-bar">
-    <button class="back-btn" onclick="goTo('s2')">&#8592;</button>
-    <span class="back-ttl">Cara Kualifikasi</span>
-  </div>
-  <div class="scroll">
-    <div style="margin:12px 16px 0;background:#f9fafb;border-radius:12px;padding:13px;border:1px solid #e5e7eb">
-      <div style="font-size:12px;font-weight:700;color:#111;margin-bottom:6px">Bagaimana tier ditentukan?</div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <div style="flex:1;background:#eff6ff;border-radius:9px;padding:9px;text-align:center;border:1px solid #bfdbfe">
-          <div style="font-size:10px;color:#6b7280;margin-bottom:2px">Pakai</div>
-          <div style="font-size:12px;font-weight:800;color:#1540a8">Volume 30D</div>
-        </div>
-        <div style="font-size:12px;font-weight:800;color:#d1d5db">atau</div>
-        <div style="flex:1;background:#f0fdf4;border-radius:9px;padding:9px;text-align:center;border:1px solid #bbf7d0">
-          <div style="font-size:10px;color:#6b7280;margin-bottom:2px">Pakai</div>
-          <div style="font-size:12px;font-weight:800;color:#16a34a">AUM EOD</div>
-        </div>
-      </div>
-      <div style="font-size:11px;color:#9ca3af;text-align:center;margin-top:8px">Sistem pilih yang <strong style="color:#374151">lebih tinggi</strong> setiap hari pukul 00:00</div>
-    </div>
-
-    <div class="qual-toggle" id="qualToggle">
-      <button class="qt-btn act" id="vBtn" onclick="switchQ('v')">Volume 30D</button>
-      <button class="qt-btn" id="aBtn" onclick="switchQ('a')">AUM</button>
-    </div>
-
-    <!-- Volume View -->
-    <div id="vView">
-      <div class="qual-card">
-        <div class="qc-top">
-          <div><div class="qc-lbl">Volume 30D kamu</div><div class="qc-amt">Rp 6,8M</div></div>
-          <div class="qc-tier">VIP 2</div>
-        </div>
-        <div class="qc-prog">
-          <div class="qcp-lbl"><span>Menuju VIP 3</span><span>68%</span></div>
-          <div class="qcp-track"><div class="qcp-fill" style="width:68%"></div></div>
-          <div style="font-size:11px;color:#9ca3af;margin-top:5px">Butuh Rp 3,2M lagi · target: Rp 10M total</div>
-        </div>
-        <div class="tier-list">
-          <div class="tl-row"><span class="tl-tier reg">Regular</span><span class="tl-target">—</span><span class="tl-status-ok">&#10003; Terpenuhi</span></div>
-          <div class="tl-row"><span class="tl-tier">VIP 1</span><span class="tl-target">Rp 500jt</span><span class="tl-status-ok">&#10003; Terpenuhi</span></div>
-          <div class="tl-row"><span class="tl-tier active">VIP 2</span><span class="tl-target">Rp 2M</span><span class="tl-status-cur">&#10003; Aktif</span></div>
-          <div class="tl-row"><span class="tl-tier" style="opacity:0.5">VIP 3</span><span class="tl-target">Rp 10M</span><span class="tl-status-prog">68% tercapai</span></div>
-          <div class="tl-row"><span class="tl-tier" style="opacity:0.3">VIP 4</span><span class="tl-target">Rp 30M</span><span class="tl-status-no">—</span></div>
-          <div class="tl-row"><span class="tl-tier" style="opacity:0.2">VIP 5</span><span class="tl-target">Rp 100M</span><span class="tl-status-no">—</span></div>
-        </div>
-      </div>
-      <div class="inline-insight">
-        <div class="ii-icon">&#128161;</div>
-        <div class="ii-text"><strong>Kamu 32% lagi ke VIP 3.</strong> Di VIP 3, Spot Taker kamu 0,05% — lebih rendah dari Binance regular (0,10%) dan setara Binance VIP 2.</div>
-      </div>
-    </div>
-
-    <!-- AUM View -->
-    <div id="aView" style="display:none">
-      <div class="qual-card">
-        <div class="qc-top">
-          <div><div class="qc-lbl">Total AUM Kripto kamu</div><div class="qc-amt">Rp 34,5M</div></div>
-          <div class="qc-tier" style="background:#f0fdf4;border-color:#86efac;color:#16a34a">VIP 4 eligible</div>
-        </div>
-        <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:11px;padding:11px 13px;margin-bottom:12px;display:flex;gap:8px;align-items:center">
-          <div style="font-size:16px">&#128640;</div>
-          <div style="font-size:12px;color:#16a34a;line-height:1.5">AUM kamu setara <strong>VIP 4</strong>! Sistem akan mengevaluasi ulang besok dan memilih tier tertinggi antara volume atau AUM.</div>
-        </div>
-        <div class="tier-list">
-          <div class="tl-row"><span class="tl-tier reg">Regular</span><span class="tl-target">—</span><span class="tl-status-ok">&#10003;</span></div>
-          <div class="tl-row"><span class="tl-tier">VIP 1</span><span class="tl-target">AUM Rp 1M</span><span class="tl-status-ok">&#10003;</span></div>
-          <div class="tl-row"><span class="tl-tier">VIP 2</span><span class="tl-target">AUM Rp 5M</span><span class="tl-status-ok">&#10003;</span></div>
-          <div class="tl-row"><span class="tl-tier">VIP 3</span><span class="tl-target">AUM Rp 15M</span><span class="tl-status-ok">&#10003;</span></div>
-          <div class="tl-row"><span class="tl-tier active" style="color:#16a34a">VIP 4</span><span class="tl-target">AUM Rp 30M</span><span class="tl-status-cur" style="color:#16a34a">&#10003; Eligible</span></div>
-          <div class="tl-row"><span class="tl-tier" style="opacity:0.3">VIP 5</span><span class="tl-target">AUM Rp 100M</span><span class="tl-status-no">—</span></div>
-        </div>
-      </div>
-      <div class="inline-insight" style="background:#f0fdf4;border-color:#86efac">
-        <div class="ii-icon" style="color:#16a34a">&#128200;</div>
-        <div class="ii-text" style="color:#166534"><strong>Nilai aset kamu mengkualifikasi VIP 4.</strong> Besok kamu akan otomatis naik ke Coin VIP 4. Tidak perlu trading tambahan.</div>
-      </div>
-    </div>
-    <div style="height:14px"></div>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════
-     SCREEN 5 — ORDER PANEL
-═══════════════════════════════════════════════ -->
-<div class="sc" id="s5">
-  <div class="sb"><span class="sb-time">9:41</span><div class="sb-icons">▲▲ WiFi 🔋</div></div>
-  <div class="back-bar">
-    <button class="back-btn" onclick="goTo('s1')">&#8592;</button>
-    <span class="back-ttl">BTC/IDR</span>
-    <span style="margin-left:auto;display:flex;align-items:center;gap:5px;padding-right:2px"><span style="font-size:14px;font-weight:800;color:#111">Rp 1,62M</span><span style="font-size:11px;font-weight:600;color:#16a34a">+2,41%</span></span>
-  </div>
-  <div class="scroll">
-    <div class="mkt-stats">
-      <div class="mst"><div class="mst-lbl">24h High</div><div class="mst-val" style="color:#16a34a">Rp 1,65M</div></div>
-      <div class="mst"><div class="mst-lbl">24h Low</div><div class="mst-val" style="color:#dc2626">Rp 1,59M</div></div>
-      <div class="mst"><div class="mst-lbl">24h Vol</div><div class="mst-val">243M</div></div>
-    </div>
-    <div class="dir-tabs">
-      <button class="dt-buy">Beli</button>
-      <button class="dt-sell">Jual</button>
-    </div>
-    <div class="field-group">
-      <div class="field-lbl">Harga (IDR)</div>
-      <div class="field-input"><div class="field-val">1.620.000</div><div class="field-unit">IDR</div></div>
-    </div>
-    <div class="field-group">
-      <div class="field-lbl">Jumlah (BTC)</div>
-      <div class="field-input"><div class="field-val">0,001234</div><div class="field-unit">BTC</div></div>
-    </div>
-    <div class="pct-row">
-      <button class="pct-btn">25%</button>
-      <button class="pct-btn">50%</button>
-      <button class="pct-btn">75%</button>
-      <button class="pct-btn">100%</button>
-    </div>
-
-    <!-- VIP Fee Line — highest intent entry point -->
-    <div class="fee-line" onclick="goTo('s2')">
-      <div class="fl-left">Biaya transaksi</div>
-      <div class="fl-right">
-        <div class="fl-val">0,06%</div>
-        <div class="fl-badge">Coin VIP 2</div>
-        <div class="fl-cmp">vs 0,10% reguler</div>
-        <div class="fl-arrow">›</div>
-      </div>
-    </div>
-
-    <div class="order-total">
-      <span class="ot-lbl">Total pembelian</span>
-      <span class="ot-val">Rp 1.998,00</span>
-    </div>
-    <div class="order-total">
-      <span class="ot-lbl">Biaya VIP (0,06%)</span>
-      <span class="ot-fee">Rp 1,20 <span style="color:#9ca3af;font-weight:400;font-size:10px">hemat Rp 0,80 vs reguler</span></span>
-    </div>
-    <button class="order-btn">Beli BTC</button>
-  </div>
-  <nav class="bnav">
-    <button class="nb" onclick="goTo('s1')"><div class="ico">🏠</div><span class="lbl">Home</span></button>
-    <button class="nb act"><div class="ico" style="font-size:20px">₿</div><span class="lbl">Kripto</span></button>
-    <button class="nb act"><div class="ico">📈</div><span class="lbl" style="color:#1540a8;font-weight:700">Trade</span></button>
-    <button class="nb"><div class="ico">🥧</div><span class="lbl">Portfolio</span></button>
-    <button class="nb"><div class="ico">👤</div><span class="lbl">Akun</span></button>
-  </nav>
-</div>
-
-
-<!-- ═══════════════════════════════════════════════
-     SCREEN 6 — TIER UPGRADE NOTIFICATION
-═══════════════════════════════════════════════ -->
-<div class="sc" id="s6">
-  <div class="sb"><span class="sb-time">9:41</span><div class="sb-icons">▲▲ WiFi 🔋</div></div>
-  <div class="back-bar">
-    <button class="back-btn" onclick="goTo('s1')">&#8592;</button>
-    <span class="back-ttl">Notifikasi</span>
-  </div>
-  <div class="scroll">
-    <div class="upg-outer">
-      <div class="upg-banner">
-        <div class="upg-icon">&#128081;</div>
-        <div class="upg-title">Naik ke Coin VIP 3!</div>
-        <div class="upg-sub">Kamu makin kompetitif vs exchange global</div>
-      </div>
-      <div class="upg-body">
-        <div class="upg-ba">
-          <div class="upg-chip"><div class="upg-chip-lbl">Sebelumnya</div><div class="upg-chip-name">VIP 2</div></div>
-          <div class="upg-arr">&#8594;</div>
-          <div class="upg-chip new"><div class="upg-chip-lbl">Sekarang</div><div class="upg-chip-name new">VIP 3</div></div>
-        </div>
-        <div class="upg-diff">
-          <div class="upg-diff-title">Fee baru kamu</div>
-          <div class="upg-diff-row"><span class="udl">Spot Maker</span><div class="udr"><span class="udr-old">0,04%</span><span class="udr-new">0,02%</span></div></div>
-          <div class="upg-diff-row"><span class="udl">Spot Taker</span><div class="udr"><span class="udr-old">0,06%</span><span class="udr-new">0,05%</span></div></div>
-          <div class="upg-diff-row"><span class="udl">Fut Maker</span><div class="udr"><span class="udr-old">0,02%</span><span class="udr-new">0,01%</span></div></div>
-          <div class="upg-diff-row"><span class="udl">Fut Taker</span><div class="udr"><span class="udr-old">0,05%</span><span class="udr-new">0,04%</span></div></div>
-        </div>
-        <div class="upg-insight">
-          <div class="ui-icon">&#128202;</div>
-          <div class="ui-text">Spot Taker kamu <strong style="color:#1d4ed8">0,05%</strong> — sekarang lebih rendah dari <strong style="color:#1d4ed8">Binance regular (0,10%)</strong> dan setara <strong style="color:#1d4ed8">Binance VIP 2</strong>. Tetap trading di Ajaib.</div>
-        </div>
-        <div style="background:#fefce8;border:1px solid #fef08a;border-radius:11px;padding:11px 13px;display:flex;gap:8px;margin-bottom:14px">
-          <div style="font-size:14px;flex-shrink:0">&#9888;</div>
-          <div style="font-size:11px;color:#92400e;line-height:1.45">Benefit berlaku untuk <strong>Kripto Spot & Futures</strong> saja. Tidak berlaku untuk Saham IDR, Saham AS, dan Reksadana.</div>
-        </div>
-        <button class="upg-cta" onclick="goTo('s2')">Lihat Detail Coin VIP Saya</button>
-        <div class="upg-skip" onclick="goTo('s1')">Nanti saja</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div><!-- /phone -->
-
-<!-- SCREEN NAVIGATION -->
-<div class="screen-nav">
-  <button class="nav-dot act" onclick="goTo('s1');setActive(this)">① Kripto Home</button>
-  <button class="nav-dot" onclick="goTo('s2');setActive(this)">② VIP Landing</button>
-  <button class="nav-dot" onclick="goTo('s3');setActive(this)">③ Fee + Benchmark</button>
-  <button class="nav-dot" onclick="goTo('s4');setActive(this)">④ Qualify</button>
-  <button class="nav-dot" onclick="goTo('s5');setActive(this)">⑤ Order Panel</button>
-  <button class="nav-dot gold" onclick="goTo('s6');setActive(this)">⑥ Upgrade Notif</button>
-</div>
-
-<!-- RESEARCH ANNOTATION -->
-<div class="research-note">
-  <div class="rn-title">&#9632; Riset yang dipakai (CI Crypto Discovery Study)</div>
-  <div class="rn-item"><div class="rn-dot"></div><div class="rn-txt"><strong>Retensi vs Bybit/Binance/OKX</strong> — 1 user planning to migrate ke Bybit (100x leverage). Ajaib VIP fee parity jadi counter-argument konkret untuk tetap di Ajaib.</div></div>
-  <div class="rn-item"><div class="rn-dot"></div><div class="rn-txt"><strong>Global transparency demand</strong> — Trader aktif mempertanyakan apakah data Ajaib local-only. Fee table ditampilkan dengan benchmark Binance/OKX/Bybit untuk membangun kepercayaan.</div></div>
-  <div class="rn-item"><div class="rn-dot"></div><div class="rn-txt"><strong>Segmen trader aktif</strong> — User seperti Koko, Nuel, Murhadiyanto sudah trading volume tinggi tanpa tahu tier VIP. Copy "kamu sudah di level Binance VIP 1" memicu awarness tanpa hard-sell.</div></div>
-  <div class="rn-item"><div class="rn-dot"></div><div class="rn-txt"><strong>App-switching behavior</strong> — User pakai ChatGPT, Coin Glass, Orion Terminal karena Ajaib kurang reasoning context. VIP program adalah quick-win retention tanpa butuh AI feature dulu.</div></div>
-</div>
-
-<script>
-function goTo(id){
-  document.querySelectorAll('.sc').forEach(s=>s.classList.remove('show'));
-  var t=document.getElementById(id);
-  if(t){t.classList.add('show');t.scrollTop=0}
-}
-function setActive(btn){
-  document.querySelectorAll('.nav-dot').forEach(b=>b.classList.remove('act'));
-  btn.classList.add('act');
-}
-function switchQ(mode){
-  document.getElementById('vView').style.display=mode==='v'?'block':'none';
-  document.getElementById('aView').style.display=mode==='a'?'block':'none';
-  document.getElementById('vBtn').className='qt-btn'+(mode==='v'?' act':'');
-  document.getElementById('aBtn').className='qt-btn'+(mode==='a'?' act':'');
-}
-</script>
 </body>
 </html>

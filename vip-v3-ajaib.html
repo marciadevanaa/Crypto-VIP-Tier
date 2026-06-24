@@ -280,7 +280,6 @@ body.u-spot .hdr-univ,.body.u-futures .hdr-univ{display:block!important}
 <div class="universe-switcher">
   <button class="us-btn act" onclick="setUniverse('spot',this)">🔵 Kripto Spot</button>
   <button class="us-btn" onclick="setUniverse('futures',this)">🟣 Kripto Futures</button>
-  <button class="us-btn" onclick="setUniverse('blue',this)">🌐 Combined (Blue)</button>
 </div>
 
 <div class="phone" id="phone">
@@ -430,14 +429,6 @@ body.u-spot .hdr-univ,.body.u-futures .hdr-univ{display:block!important}
     <button class="nb" onclick="goTo('s5')"><div class="nb-ico">📈</div><span class="nb-lbl">Trade</span></button>
     <button class="nb"><div class="nb-ico">🏛️</div><span class="nb-lbl">Saham AS</span></button>
     <button class="nb"><div class="nb-ico">💱</div><span class="nb-lbl">Forex</span></button>
-    <button class="nb"><div class="nb-ico">🥧</div><span class="nb-lbl">Portfolio</span></button>
-  </nav>
-  <!-- BOTTOM NAV 5 (blue) -->
-  <nav class="bnav-5" id="nav-blue" style="display:none">
-    <button class="nb" onclick="goTo('s1')"><div class="nb-ico">🏠</div><span class="nb-lbl">Home</span></button>
-    <button class="nb"><div class="nb-ico">📊</div><span class="nb-lbl"></span></button>
-    <button class="nb act"><div class="nb-ico">₿</div><span class="nb-lbl">Kripto</span></button>
-    <button class="nb"><div class="nb-ico">🌐</div><span class="nb-lbl"></span></button>
     <button class="nb"><div class="nb-ico">🥧</div><span class="nb-lbl">Portfolio</span></button>
   </nav>
 </div>
@@ -654,12 +645,11 @@ function setUniverse(u,btn){
   // Show/hide headers
   document.getElementById('hdr-spot').style.display=u==='spot'?'block':'none';
   document.getElementById('hdr-futures').style.display=u==='futures'?'block':'none';
-  document.getElementById('hdr-blue').style.display=u==='blue'?'block':'none';
+  
   // Futures content
   document.getElementById('fut-content').style.display=u==='futures'?'block':'none';
   // Nav
-  document.getElementById('nav-spot-fut').style.display=u!=='blue'?'flex':'none';
-  document.getElementById('nav-blue').style.display=u==='blue'?'flex':'none';
+  document.getElementById('nav-spot-fut').style.display='flex';
   // Nav active item
   if(u==='spot'){document.getElementById('nb-spot').className='nb act';document.getElementById('nb-futures').className='nb';}
   if(u==='futures'){document.getElementById('nb-futures').className='nb act';document.getElementById('nb-spot').className='nb';}
@@ -667,8 +657,6 @@ function setUniverse(u,btn){
   var tabs=document.getElementById('tabs-spot');
   if(tabs){tabs.innerHTML=u==='futures'
     ? '<div class="tab act">Jelajahi</div><div class="tab">Watchlist</div><div class="tab">Posisi Terbuka</div><div class="tab">Open Order</div>'
-    : u==='blue'
-    ? '<div class="tab act">Jelajahi</div><div class="tab">Watchlist</div><div class="tab">Aset</div><div class="tab">Posisi Terbuka</div>'
     : '<div class="tab act">Jelajahi</div><div class="tab">Watchlist</div><div class="tab">Aset</div><div class="tab">Open Order</div>'
   }
   // VIP sub text

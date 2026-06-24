@@ -10,33 +10,46 @@ body{background:#07080d;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
 .header{text-align:center;margin-bottom:40px}
 .tag{display:inline-flex;align-items:center;gap:6px;background:#0f1f3d;border:1px solid #1540a844;color:#60a5fa;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:16px}
 .title{font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:8px}
-.subtitle{font-size:14px;color:#4b5563;line-height:1.6;max-width:420px;margin:0 auto}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:680px;width:100%}
-@media(max-width:540px){.grid{grid-template-columns:1fr}}
+.subtitle{font-size:14px;color:#4b5563;line-height:1.6;max-width:480px;margin:0 auto}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:860px;width:100%}
+@media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}}
 .card{background:#0d1117;border:1px solid #1c2136;border-radius:20px;overflow:hidden;text-decoration:none;transition:transform 0.2s,border-color 0.2s;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-3px);border-color:#1540a8}
-.card-thumb{height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.card.featured{border-color:#7c3aed55}
+.card.featured:hover{border-color:#7c3aed}
+.card-thumb{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .thumb-v1{background:linear-gradient(135deg,#1a0a3c 0%,#0f172a 100%)}
 .thumb-v2{background:linear-gradient(135deg,#0d2070 0%,#1540a8 60%,#1060d8 100%)}
-.thumb-phone{width:72px;height:130px;background:#fff;border-radius:14px;border:3px solid rgba(255,255,255,0.15);position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.5)}
-.thumb-hdr-v1{height:38px;background:linear-gradient(135deg,#3a1c8a,#4e23b5)}
-.thumb-hdr-v2{height:38px;background:linear-gradient(135deg,#1540a8,#1060d8)}
+.thumb-v3{background:linear-gradient(135deg,#062010 0%,#0d2070 50%,#1060d8 100%)}
+.thumb-phone{width:66px;height:120px;background:#fff;border-radius:13px;border:3px solid rgba(255,255,255,0.15);position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.5)}
+.thumb-hdr{height:34px}
+.thumb-hdr-v1{background:linear-gradient(135deg,#3a1c8a,#4e23b5)}
+.thumb-hdr-v2{background:linear-gradient(135deg,#1540a8,#1060d8)}
+.thumb-hdr-v3{background:linear-gradient(160deg,#0d2070,#1060d8)}
 .thumb-lines{padding:6px 5px;display:flex;flex-direction:column;gap:4px}
 .thumb-line{height:5px;border-radius:2px;background:#e5e7eb}
 .thumb-line.short{width:60%}
-.thumb-card-mini{margin:5px;height:24px;border-radius:5px;background:#f3f4f6;border:1px solid #e5e7eb}
+.thumb-card-mini{margin:5px;height:22px;border-radius:5px;background:#f3f4f6;border:1px solid #e5e7eb}
 .thumb-card-mini.blue{background:#eff6ff;border-color:#bfdbfe}
-.badge{position:absolute;top:12px;right:12px;background:#1540a8;border:1px solid #2563eb;border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#60a5fa;letter-spacing:0.5px}
+.thumb-card-mini.green{background:#f0fdf4;border-color:#bbf7d0}
+.badge{position:absolute;top:10px;right:10px;background:#1540a8;border:1px solid #2563eb;border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#60a5fa;letter-spacing:0.5px}
 .badge.gold{background:#1a1100;border-color:#d4a01744;color:#d4a017}
-.card-body{padding:18px 18px 20px;flex:1;display:flex;flex-direction:column}
-.card-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:6px}
-.card-desc{font-size:12px;color:#4b5563;line-height:1.6;flex:1;margin-bottom:14px}
-.card-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px}
-.tag-pill{background:#111827;border:1px solid #1c2136;border-radius:6px;padding:3px 8px;font-size:10px;color:#6b7280;font-weight:500}
+.badge.purple{background:#1a0f3d;border-color:#7c3aed55;color:#a78bfa}
+.card-body{padding:16px 16px 18px;flex:1;display:flex;flex-direction:column}
+.card-label{font-size:10px;font-weight:700;color:#4b5563;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:5px}
+.card-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.3}
+.card-desc{font-size:11px;color:#4b5563;line-height:1.6;flex:1;margin-bottom:12px}
+.card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px}
+.tag-pill{background:#111827;border:1px solid #1c2136;border-radius:5px;padding:2px 7px;font-size:10px;color:#6b7280;font-weight:500}
 .tag-pill.blue{background:#0f1f3d;border-color:#1540a844;color:#60a5fa}
-.card-cta{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:#1540a8;border-radius:11px;color:#fff;font-size:13px;font-weight:700}
-.card-cta-arrow{font-size:16px;opacity:0.7}
-.footer{margin-top:36px;text-align:center;font-size:11px;color:#2a2f3d}
+.tag-pill.green{background:#0a1f12;border-color:#22c55e33;color:#4ade80}
+.tag-pill.purple{background:#1a0f3d;border-color:#7c3aed33;color:#a78bfa}
+.card-cta{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;background:#1540a8;border-radius:10px;color:#fff;font-size:12px;font-weight:700}
+.card-cta.purple-cta{background:#5b21b6}
+.card-cta-arrow{font-size:15px;opacity:0.7}
+.footer{margin-top:32px;text-align:center;font-size:11px;color:#2a2f3d}
+.new-badge{display:inline-block;background:#16a34a;color:#fff;font-size:9px;font-weight:800;padding:2px 6px;border-radius:4px;letter-spacing:0.5px;margin-left:6px;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -44,27 +57,29 @@ body{background:#07080d;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
 <div class="header">
   <div class="tag">&#9679; Design Prototype</div>
   <div class="title">Ajaib Coin VIP Tier</div>
-  <div class="subtitle">Clickable prototypes for the VIP Fee Tier Program. Open each to explore the full user flow.</div>
+  <div class="subtitle">Clickable prototypes for the VIP Fee Tier Program — from first concept to research-grounded to strategy-aligned stealth UX.</div>
 </div>
 
 <div class="grid">
 
+  <!-- V1 -->
   <a class="card" href="vip-tier-prototype.html">
     <div class="card-thumb thumb-v1">
       <div class="thumb-phone">
-        <div class="thumb-hdr-v1"></div>
+        <div class="thumb-hdr thumb-hdr-v1"></div>
         <div class="thumb-lines">
           <div class="thumb-line" style="background:#d4a017;width:45%"></div>
           <div class="thumb-line short"></div>
         </div>
         <div class="thumb-card-mini" style="background:#1c2136;border-color:#2d344a"></div>
-        <div class="thumb-card-mini" style="background:#1c2136;border-color:#2d344a;margin-top:4px"></div>
+        <div class="thumb-card-mini" style="background:#1c2136;border-color:#2d344a;margin-top:3px"></div>
       </div>
-      <div class="badge gold">V1 · Dark</div>
+      <div class="badge gold">V1</div>
     </div>
     <div class="card-body">
+      <div class="card-label">Iteration 1</div>
       <div class="card-title">VIP Tier — Dark Theme</div>
-      <div class="card-desc">First iteration. Dark UI with gold VIP accents. Covers tier landing page, fee table, progress tracker, and order panel fee line.</div>
+      <div class="card-desc">First concept. Tier landing page, fee table, progress tracker, and order panel entry point. Account-level placement challenge identified.</div>
       <div class="card-tags">
         <div class="tag-pill">6 Screens</div>
         <div class="tag-pill">Dark Mode</div>
@@ -74,29 +89,59 @@ body{background:#07080d;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
     </div>
   </a>
 
+  <!-- V2 -->
   <a class="card" href="vip-tier-research-v2.html">
     <div class="card-thumb thumb-v2">
       <div class="thumb-phone">
-        <div class="thumb-hdr-v2"></div>
+        <div class="thumb-hdr thumb-hdr-v2"></div>
         <div class="thumb-lines">
           <div class="thumb-line short" style="background:#d4a017"></div>
           <div class="thumb-line"></div>
         </div>
         <div class="thumb-card-mini blue"></div>
-        <div class="thumb-card-mini blue" style="margin-top:4px"></div>
+        <div class="thumb-card-mini blue" style="margin-top:3px"></div>
       </div>
-      <div class="badge">V2 · Research</div>
+      <div class="badge">V2</div>
     </div>
     <div class="card-body">
-      <div class="card-title">VIP Tier — Research v2</div>
-      <div class="card-desc">Rebuilt from CI Crypto Discovery Study. Addresses Binance/OKX migration risk with competitor benchmarks and trader persona copy.</div>
+      <div class="card-label">Iteration 2 · Research</div>
+      <div class="card-title">VIP Tier — Research-Based</div>
+      <div class="card-desc">Rebuilt from CI Crypto Discovery Study. VIP placed inside Coin section. Competitor fee benchmark vs Binance/OKX/Bybit. Trader persona copy.</div>
       <div class="card-tags">
-        <div class="tag-pill blue">Research-Based</div>
+        <div class="tag-pill blue">Research</div>
         <div class="tag-pill">6 Screens</div>
         <div class="tag-pill">Light Mode</div>
         <div class="tag-pill">Clickable</div>
       </div>
       <div class="card-cta">Open Prototype <span class="card-cta-arrow">&#8599;</span></div>
+    </div>
+  </a>
+
+  <!-- V3 -->
+  <a class="card featured" href="vip-tier-stealth-v3.html">
+    <div class="card-thumb thumb-v3">
+      <div class="thumb-phone">
+        <div class="thumb-hdr thumb-hdr-v3"></div>
+        <div class="thumb-lines">
+          <div class="thumb-line short" style="background:#4ade80"></div>
+          <div class="thumb-line"></div>
+        </div>
+        <div class="thumb-card-mini green"></div>
+        <div class="thumb-card-mini green" style="margin-top:3px"></div>
+      </div>
+      <div class="badge purple">V3 <span style="color:#a78bfa">NEW</span></div>
+    </div>
+    <div class="card-body">
+      <div class="card-label">Iteration 3 · Strategy <span class="new-badge">NEW</span></div>
+      <div class="card-title">Stealth VIP — Loss Aversion + Goal-Gradient</div>
+      <div class="card-desc">Tier numbers hidden per PRD. Savings amount as hero metric. Next unlock only (goal-gradient). Status matching for Binance/Bybit migrants. Surprise upgrade framing.</div>
+      <div class="card-tags">
+        <div class="tag-pill purple">Stealth UX</div>
+        <div class="tag-pill green">Loss Aversion</div>
+        <div class="tag-pill">6 Screens</div>
+        <div class="tag-pill">Clickable</div>
+      </div>
+      <div class="card-cta purple-cta">Open Prototype <span class="card-cta-arrow">&#8599;</span></div>
     </div>
   </a>
 

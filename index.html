@@ -6,145 +6,219 @@
 <title>Ajaib Kripto — VIP Tier Prototypes</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-body{background:#07080d;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
-.header{text-align:center;margin-bottom:40px}
-.tag{display:inline-flex;align-items:center;gap:6px;background:#0f1f3d;border:1px solid #1540a844;color:#60a5fa;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:16px}
-.title{font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:8px}
-.subtitle{font-size:14px;color:#4b5563;line-height:1.6;max-width:480px;margin:0 auto}
-.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:860px;width:100%}
-@media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.grid{grid-template-columns:1fr}}
+body{background:#07080d;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:40px 20px}
+.header{text-align:center;margin-bottom:12px}
+.etag{display:inline-flex;align-items:center;gap:6px;background:#0f1f3d;border:1px solid #1540a844;color:#60a5fa;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+.title{font-size:26px;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:8px}
+.subtitle{font-size:13px;color:#4b5563;line-height:1.6;max-width:520px;margin:0 auto 28px}
+/* VERSION TABS */
+.vtabs{display:flex;background:#0d1117;border:1px solid #1c2136;border-radius:12px;padding:4px;gap:3px;margin-bottom:0;max-width:600px;width:100%}
+.vtab{flex:1;padding:9px 6px;border-radius:9px;text-align:center;font-size:12px;font-weight:600;cursor:pointer;color:#6b7280;transition:all 0.2s;border:none;background:none}
+.vtab.act{background:#1540a8;color:#fff}
+/* CARD GRID */
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:800px;width:100%;margin-top:16px}
+@media(max-width:680px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.grid{grid-template-columns:1fr}}
 .card{background:#0d1117;border:1px solid #1c2136;border-radius:20px;overflow:hidden;text-decoration:none;transition:transform 0.2s,border-color 0.2s;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-3px);border-color:#1540a8}
-.card.featured{border-color:#7c3aed55}
-.card.featured:hover{border-color:#7c3aed}
-.card-thumb{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.thumb-v1{background:linear-gradient(135deg,#1a0a3c 0%,#0f172a 100%)}
-.thumb-v2{background:linear-gradient(135deg,#0d2070 0%,#1540a8 60%,#1060d8 100%)}
-.thumb-v3{background:linear-gradient(135deg,#062010 0%,#0d2070 50%,#1060d8 100%)}
-.thumb-phone{width:66px;height:120px;background:#fff;border-radius:13px;border:3px solid rgba(255,255,255,0.15);position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.5)}
-.thumb-hdr{height:34px}
-.thumb-hdr-v1{background:linear-gradient(135deg,#3a1c8a,#4e23b5)}
-.thumb-hdr-v2{background:linear-gradient(135deg,#1540a8,#1060d8)}
-.thumb-hdr-v3{background:linear-gradient(160deg,#0d2070,#1060d8)}
-.thumb-lines{padding:6px 5px;display:flex;flex-direction:column;gap:4px}
-.thumb-line{height:5px;border-radius:2px;background:#e5e7eb}
-.thumb-line.short{width:60%}
-.thumb-card-mini{margin:5px;height:22px;border-radius:5px;background:#f3f4f6;border:1px solid #e5e7eb}
-.thumb-card-mini.blue{background:#eff6ff;border-color:#bfdbfe}
-.thumb-card-mini.green{background:#f0fdf4;border-color:#bbf7d0}
-.badge{position:absolute;top:10px;right:10px;background:#1540a8;border:1px solid #2563eb;border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:#60a5fa;letter-spacing:0.5px}
-.badge.gold{background:#1a1100;border-color:#d4a01744;color:#d4a017}
-.badge.purple{background:#1a0f3d;border-color:#7c3aed55;color:#a78bfa}
-.card-body{padding:16px 16px 18px;flex:1;display:flex;flex-direction:column}
-.card-label{font-size:10px;font-weight:700;color:#4b5563;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:5px}
-.card-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.3}
-.card-desc{font-size:11px;color:#4b5563;line-height:1.6;flex:1;margin-bottom:12px}
-.card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px}
-.tag-pill{background:#111827;border:1px solid #1c2136;border-radius:5px;padding:2px 7px;font-size:10px;color:#6b7280;font-weight:500}
-.tag-pill.blue{background:#0f1f3d;border-color:#1540a844;color:#60a5fa}
-.tag-pill.green{background:#0a1f12;border-color:#22c55e33;color:#4ade80}
-.tag-pill.purple{background:#1a0f3d;border-color:#7c3aed33;color:#a78bfa}
-.card-cta{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;background:#1540a8;border-radius:10px;color:#fff;font-size:12px;font-weight:700}
-.card-cta.purple-cta{background:#5b21b6}
-.card-cta-arrow{font-size:15px;opacity:0.7}
-.footer{margin-top:32px;text-align:center;font-size:11px;color:#2a2f3d}
-.new-badge{display:inline-block;background:#16a34a;color:#fff;font-size:9px;font-weight:800;padding:2px 6px;border-radius:4px;letter-spacing:0.5px;margin-left:6px;vertical-align:middle}
+.card:hover{transform:translateY(-3px)}
+.card-v1:hover{border-color:#5b21b6}
+.card-v2:hover{border-color:#1540a8}
+.card-v3:hover{border-color:#16a34a}
+.card-thumb{height:140px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.t-spot{background:linear-gradient(135deg,#2d0f78,#3D1FA5)}
+.t-futures{background:linear-gradient(135deg,#1a0a4a,#4e2eb5)}
+.t-blue{background:linear-gradient(135deg,#0d2070,#3928BE)}
+.tphone{width:62px;height:114px;background:#fff;border-radius:12px;border:3px solid rgba(255,255,255,0.15);overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,0.4)}
+.tphone-hdr{height:30px}
+.thdr-purple{background:linear-gradient(135deg,#3D1FA5,#2E168E)}
+.thdr-blue{background:linear-gradient(135deg,#3928BE,#2A1AA8)}
+.tphone-lines{padding:5px;display:flex;flex-direction:column;gap:3px}
+.tl{height:4px;border-radius:2px;background:#e5e7eb}
+.tl.s{width:55%}.tl.xs{width:40%}
+.tl.gold{background:#F59E0B;width:38%}
+.tl.green{background:#bbf7d0;width:50%}
+.tc{margin:4px 5px;height:18px;border-radius:4px;background:#eff6ff;border:1px solid #bfdbfe}
+.tc.gold{background:#fef9e7;border-color:#fde68a}
+.tc.green{background:#f0fdf4;border-color:#bbf7d0}
+.badge{position:absolute;top:10px;right:10px;border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;letter-spacing:0.3px}
+.badge-v1{background:#1a0f3d;border:1px solid #5b21b644;color:#a78bfa}
+.badge-v2{background:#0f1f3d;border:1px solid #1540a844;color:#60a5fa}
+.badge-v3{background:#0a1f12;border:1px solid #16a34a33;color:#4ade80}
+.card-body{padding:14px 15px 17px;flex:1;display:flex;flex-direction:column}
+.card-version{font-size:10px;font-weight:700;color:#4b5563;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px}
+.card-title{font-size:14px;font-weight:800;color:#fff;margin-bottom:5px;line-height:1.3}
+.card-desc{font-size:11px;color:#4b5563;line-height:1.55;flex:1;margin-bottom:10px}
+.tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px}
+.tp{background:#111827;border:1px solid #1c2136;border-radius:5px;padding:2px 7px;font-size:10px;color:#6b7280;font-weight:500}
+.tp.uni{background:#1a0a4a;border-color:#3D1FA533;color:#a78bfa}
+.cta{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;color:#fff;font-size:12px;font-weight:700}
+.cta-v1{background:#5b21b6}.cta-v2{background:#1540a8}.cta-v3{background:#16a34a}
+/* DIVIDER */
+.divider{width:100%;max-width:800px;height:1px;background:#1c2136;margin:28px 0 20px}
+.section-label{font-size:11px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;text-align:center}
+/* OLD FILES */
+.old-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;max-width:800px;width:100%}
+@media(max-width:680px){.old-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.old-grid{grid-template-columns:1fr}}
+.old-card{background:#0a0d14;border:1px solid #1c2136;border-radius:14px;padding:13px 14px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:border-color 0.2s}
+.old-card:hover{border-color:#374151}
+.old-ico{width:32px;height:32px;border-radius:8px;background:#0f1728;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.old-title{font-size:12px;font-weight:700;color:#6b7280}
+.old-sub{font-size:10px;color:#374151;margin-top:2px}
+.footer{margin-top:32px;font-size:11px;color:#1c2136}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="tag">&#9679; Design Prototype</div>
+  <div class="etag">&#9679; Design Prototype</div>
   <div class="title">Ajaib Coin VIP Tier</div>
-  <div class="subtitle">Clickable prototypes for the VIP Fee Tier Program — from first concept to research-grounded to strategy-aligned stealth UX.</div>
+  <div class="subtitle">Each version includes Kripto Spot (purple), Kripto Futures (purple), and Combined Kripto (blue) universes — matching the actual Ajaib UI from Figma.</div>
 </div>
 
 <div class="grid">
 
-  <!-- V1 -->
-  <a class="card" href="vip-tier-prototype.html">
-    <div class="card-thumb thumb-v1">
-      <div class="thumb-phone">
-        <div class="thumb-hdr thumb-hdr-v1"></div>
-        <div class="thumb-lines">
-          <div class="thumb-line" style="background:#d4a017;width:45%"></div>
-          <div class="thumb-line short"></div>
-        </div>
-        <div class="thumb-card-mini" style="background:#1c2136;border-color:#2d344a"></div>
-        <div class="thumb-card-mini" style="background:#1c2136;border-color:#2d344a;margin-top:3px"></div>
-      </div>
-      <div class="badge gold">V1</div>
+  <!-- V1 SPOT -->
+  <a class="card card-v1" href="vip-v1-ajaib.html?u=spot">
+    <div class="card-thumb t-spot">
+      <div class="tphone"><div class="tphone-hdr thdr-purple"></div><div class="tphone-lines"><div class="tl gold"></div><div class="tl s"></div></div><div class="tc gold"></div><div class="tc" style="margin-top:3px"></div></div>
+      <div class="badge badge-v1">V1 · Spot</div>
     </div>
     <div class="card-body">
-      <div class="card-label">Iteration 1</div>
-      <div class="card-title">VIP Tier — Dark Theme</div>
-      <div class="card-desc">First concept. Tier landing page, fee table, progress tracker, and order panel entry point. Account-level placement challenge identified.</div>
-      <div class="card-tags">
-        <div class="tag-pill">6 Screens</div>
-        <div class="tag-pill">Dark Mode</div>
-        <div class="tag-pill">Clickable</div>
-      </div>
-      <div class="card-cta">Open Prototype <span class="card-cta-arrow">&#8599;</span></div>
+      <div class="card-version">V1 · First Concept</div>
+      <div class="card-title">VIP Tier — Kripto Spot</div>
+      <div class="card-desc">Explicit tier numbers (VIP 1–5), fee table with progress tracker. Purple Spot universe.</div>
+      <div class="tags"><div class="tp uni">🔵 Spot</div><div class="tp">6 Screens</div><div class="tp">Clickable</div></div>
+      <div class="cta cta-v1">Open Prototype <span>↗</span></div>
     </div>
   </a>
 
-  <!-- V2 -->
-  <a class="card" href="vip-tier-research-v2.html">
-    <div class="card-thumb thumb-v2">
-      <div class="thumb-phone">
-        <div class="thumb-hdr thumb-hdr-v2"></div>
-        <div class="thumb-lines">
-          <div class="thumb-line short" style="background:#d4a017"></div>
-          <div class="thumb-line"></div>
-        </div>
-        <div class="thumb-card-mini blue"></div>
-        <div class="thumb-card-mini blue" style="margin-top:3px"></div>
-      </div>
-      <div class="badge">V2</div>
+  <!-- V1 FUTURES -->
+  <a class="card card-v1" href="vip-v1-ajaib.html">
+    <div class="card-thumb t-futures">
+      <div class="tphone"><div class="tphone-hdr thdr-purple"></div><div class="tphone-lines"><div class="tl gold"></div><div class="tl xs"></div></div><div class="tc gold"></div><div class="tc" style="margin-top:3px"></div></div>
+      <div class="badge badge-v1">V1 · Futures</div>
     </div>
     <div class="card-body">
-      <div class="card-label">Iteration 2 · Research</div>
-      <div class="card-title">VIP Tier — Research-Based</div>
-      <div class="card-desc">Rebuilt from CI Crypto Discovery Study. VIP placed inside Coin section. Competitor fee benchmark vs Binance/OKX/Bybit. Trader persona copy.</div>
-      <div class="card-tags">
-        <div class="tag-pill blue">Research</div>
-        <div class="tag-pill">6 Screens</div>
-        <div class="tag-pill">Light Mode</div>
-        <div class="tag-pill">Clickable</div>
-      </div>
-      <div class="card-cta">Open Prototype <span class="card-cta-arrow">&#8599;</span></div>
+      <div class="card-version">V1 · First Concept</div>
+      <div class="card-title">VIP Tier — Kripto Futures</div>
+      <div class="card-desc">Same VIP concept in the Futures universe. Purple header, Futures nav, Margin stats.</div>
+      <div class="tags"><div class="tp uni">🟣 Futures</div><div class="tp">6 Screens</div><div class="tp">Clickable</div></div>
+      <div class="cta cta-v1">Open → switch to Futures <span>↗</span></div>
     </div>
   </a>
 
-  <!-- V3 -->
-  <a class="card featured" href="vip-tier-stealth-v3.html">
-    <div class="card-thumb thumb-v3">
-      <div class="thumb-phone">
-        <div class="thumb-hdr thumb-hdr-v3"></div>
-        <div class="thumb-lines">
-          <div class="thumb-line short" style="background:#4ade80"></div>
-          <div class="thumb-line"></div>
-        </div>
-        <div class="thumb-card-mini green"></div>
-        <div class="thumb-card-mini green" style="margin-top:3px"></div>
-      </div>
-      <div class="badge purple">V3 <span style="color:#a78bfa">NEW</span></div>
+  <!-- V1 BLUE -->
+  <a class="card card-v1" href="vip-v1-ajaib.html">
+    <div class="card-thumb t-blue">
+      <div class="tphone"><div class="tphone-hdr thdr-blue"></div><div class="tphone-lines"><div class="tl gold"></div><div class="tl s"></div></div><div class="tc"></div><div class="tc" style="margin-top:3px"></div></div>
+      <div class="badge badge-v1">V1 · Blue</div>
     </div>
     <div class="card-body">
-      <div class="card-label">Iteration 3 · Strategy <span class="new-badge">NEW</span></div>
-      <div class="card-title">Stealth VIP — Loss Aversion + Goal-Gradient</div>
-      <div class="card-desc">Tier numbers hidden per PRD. Savings amount as hero metric. Next unlock only (goal-gradient). Status matching for Binance/Bybit migrants. Surprise upgrade framing.</div>
-      <div class="card-tags">
-        <div class="tag-pill purple">Stealth UX</div>
-        <div class="tag-pill green">Loss Aversion</div>
-        <div class="tag-pill">6 Screens</div>
-        <div class="tag-pill">Clickable</div>
-      </div>
-      <div class="card-cta purple-cta">Open Prototype <span class="card-cta-arrow">&#8599;</span></div>
+      <div class="card-version">V1 · First Concept</div>
+      <div class="card-title">VIP Tier — Combined Kripto</div>
+      <div class="card-desc">VIP in the combined blue Kripto universe. 5-item nav, "Total Investasi" header.</div>
+      <div class="tags"><div class="tp uni">🌐 Combined</div><div class="tp">6 Screens</div><div class="tp">Clickable</div></div>
+      <div class="cta cta-v1">Open → switch to Combined <span>↗</span></div>
     </div>
   </a>
 
+  <!-- V2 SPOT -->
+  <a class="card card-v2" href="vip-v2-ajaib.html">
+    <div class="card-thumb t-spot">
+      <div class="tphone"><div class="tphone-hdr thdr-purple"></div><div class="tphone-lines"><div class="tl" style="background:#60a5fa;width:55%"></div><div class="tl s"></div></div><div class="tc"></div><div class="tc" style="margin-top:3px;background:#fef9e7;border-color:#fde68a"></div></div>
+      <div class="badge badge-v2">V2 · Spot</div>
+    </div>
+    <div class="card-body">
+      <div class="card-version">V2 · Research-Based</div>
+      <div class="card-title">Research VIP — Kripto Spot</div>
+      <div class="card-desc">CI Crypto Study–based. "Fee setara Binance VIP 1" framing + competitor benchmark table.</div>
+      <div class="tags"><div class="tp uni">🔵 Spot</div><div class="tp" style="background:#0f1f3d;border-color:#1540a844;color:#60a5fa">Research</div><div class="tp">Clickable</div></div>
+      <div class="cta cta-v2">Open Prototype <span>↗</span></div>
+    </div>
+  </a>
+
+  <!-- V2 FUTURES -->
+  <a class="card card-v2" href="vip-v2-ajaib.html">
+    <div class="card-thumb t-futures">
+      <div class="tphone"><div class="tphone-hdr thdr-purple"></div><div class="tphone-lines"><div class="tl" style="background:#60a5fa;width:55%"></div><div class="tl xs"></div></div><div class="tc"></div><div class="tc" style="margin-top:3px"></div></div>
+      <div class="badge badge-v2">V2 · Futures</div>
+    </div>
+    <div class="card-body">
+      <div class="card-version">V2 · Research-Based</div>
+      <div class="card-title">Research VIP — Kripto Futures</div>
+      <div class="card-desc">Research framing in Futures universe. Addresses Bybit/Binance migration risk.</div>
+      <div class="tags"><div class="tp uni">🟣 Futures</div><div class="tp" style="background:#0f1f3d;border-color:#1540a844;color:#60a5fa">Research</div><div class="tp">Clickable</div></div>
+      <div class="cta cta-v2">Open → switch to Futures <span>↗</span></div>
+    </div>
+  </a>
+
+  <!-- V2 BLUE -->
+  <a class="card card-v2" href="vip-v2-ajaib.html">
+    <div class="card-thumb t-blue">
+      <div class="tphone"><div class="tphone-hdr thdr-blue"></div><div class="tphone-lines"><div class="tl" style="background:#60a5fa;width:55%"></div><div class="tl s"></div></div><div class="tc"></div><div class="tc" style="margin-top:3px"></div></div>
+      <div class="badge badge-v2">V2 · Blue</div>
+    </div>
+    <div class="card-body">
+      <div class="card-version">V2 · Research-Based</div>
+      <div class="card-title">Research VIP — Combined Kripto</div>
+      <div class="card-desc">Same research approach in the combined blue universe. Unified nav pattern.</div>
+      <div class="tags"><div class="tp uni">🌐 Combined</div><div class="tp" style="background:#0f1f3d;border-color:#1540a844;color:#60a5fa">Research</div><div class="tp">Clickable</div></div>
+      <div class="cta cta-v2">Open → switch to Combined <span>↗</span></div>
+    </div>
+  </a>
+
+  <!-- V3 SPOT -->
+  <a class="card card-v3" href="vip-v3-ajaib.html">
+    <div class="card-thumb t-spot">
+      <div class="tphone"><div class="tphone-hdr thdr-purple"></div><div class="tphone-lines"><div class="tl green"></div><div class="tl s"></div></div><div class="tc green"></div><div class="tc green" style="margin-top:3px"></div></div>
+      <div class="badge badge-v3">V3 · Spot ✨</div>
+    </div>
+    <div class="card-body">
+      <div class="card-version">V3 · Stealth VIP <span style="background:#16a34a;color:#fff;font-size:9px;padding:1px 5px;border-radius:3px;margin-left:3px">NEW</span></div>
+      <div class="card-title">Stealth VIP — Kripto Spot</div>
+      <div class="card-desc">Tier numbers hidden. "Hemat Rp 47.600/bln" as hero. Goal-gradient next step only. Status matching for Binance/Bybit users.</div>
+      <div class="tags"><div class="tp uni">🔵 Spot</div><div class="tp" style="background:#0a1f12;border-color:#16a34a33;color:#4ade80">Stealth UX</div><div class="tp">Clickable</div></div>
+      <div class="cta cta-v3">Open Prototype <span>↗</span></div>
+    </div>
+  </a>
+
+  <!-- V3 FUTURES -->
+  <a class="card card-v3" href="vip-v3-ajaib.html">
+    <div class="card-thumb t-futures">
+      <div class="tphone"><div class="tphone-hdr thdr-purple"></div><div class="tphone-lines"><div class="tl green"></div><div class="tl xs"></div></div><div class="tc green"></div><div class="tc green" style="margin-top:3px"></div></div>
+      <div class="badge badge-v3">V3 · Futures ✨</div>
+    </div>
+    <div class="card-body">
+      <div class="card-version">V3 · Stealth VIP <span style="background:#16a34a;color:#fff;font-size:9px;padding:1px 5px;border-radius:3px;margin-left:3px">NEW</span></div>
+      <div class="card-title">Stealth VIP — Kripto Futures</div>
+      <div class="card-desc">Loss aversion + goal-gradient in Futures universe. Surprise upgrade: "Benefit kamu naik!" not "VIP 3".</div>
+      <div class="tags"><div class="tp uni">🟣 Futures</div><div class="tp" style="background:#0a1f12;border-color:#16a34a33;color:#4ade80">Stealth UX</div><div class="tp">Clickable</div></div>
+      <div class="cta cta-v3">Open → switch to Futures <span>↗</span></div>
+    </div>
+  </a>
+
+  <!-- V3 BLUE -->
+  <a class="card card-v3" href="vip-v3-ajaib.html">
+    <div class="card-thumb t-blue">
+      <div class="tphone"><div class="tphone-hdr thdr-blue"></div><div class="tphone-lines"><div class="tl green"></div><div class="tl s"></div></div><div class="tc green"></div><div class="tc green" style="margin-top:3px"></div></div>
+      <div class="badge badge-v3">V3 · Blue ✨</div>
+    </div>
+    <div class="card-body">
+      <div class="card-version">V3 · Stealth VIP <span style="background:#16a34a;color:#fff;font-size:9px;padding:1px 5px;border-radius:3px;margin-left:3px">NEW</span></div>
+      <div class="card-title">Stealth VIP — Combined Kripto</div>
+      <div class="card-desc">Stealth approach in the blue combined universe. 5-item nav, savings history, status matching.</div>
+      <div class="tags"><div class="tp uni">🌐 Combined</div><div class="tp" style="background:#0a1f12;border-color:#16a34a33;color:#4ade80">Stealth UX</div><div class="tp">Clickable</div></div>
+      <div class="cta cta-v3">Open → switch to Combined <span>↗</span></div>
+    </div>
+  </a>
+
+</div>
+
+<div class="divider"></div>
+<div class="section-label" style="color:#374151">How to switch universe inside each prototype</div>
+<div style="background:#0d1117;border:1px solid #1c2136;border-radius:14px;padding:14px 18px;max-width:500px;font-size:12px;color:#6b7280;line-height:1.7">
+  Each prototype file has a <strong style="color:#9ca3af">universe switcher</strong> at the top: <em>🔵 Kripto Spot → 🟣 Kripto Futures → 🌐 Combined</em>. The phone frame adapts the header, tabs, stats, and bottom nav for each universe. The VIP screens stay the same across universes.
 </div>
 
 <div class="footer">Ajaib Kripto &middot; VIP Fee Tier Program &middot; 2026</div>
